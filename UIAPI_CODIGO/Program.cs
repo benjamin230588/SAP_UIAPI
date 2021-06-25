@@ -27,7 +27,9 @@ namespace UIAPI_CODIGO
             /// sihh
             /// ggggh
             /// // fffff
-            /// hyghghg
+            /// hyg
+            /// jjjhghg
+            /// jhh
             /// ddd
             Menus();
             SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
