@@ -22,6 +22,9 @@ namespace UIAPI_CODIGO
             // benjamin
             /// cambio hoy dia
             /// otro cambio
+            /// //oto cambio
+            /// dddd
+            /// 
             Menus();
             SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
             SBO_Application.MenuEvent += new SAPbouiCOM._IApplicationEvents_MenuEventEventHandler(SBO_Application_MenuEvent);
