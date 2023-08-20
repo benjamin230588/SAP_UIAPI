@@ -15,27 +15,20 @@ namespace UIAPI_CODIGO
     {
         public static Application SBO_Application = null;
         public static SAPbobsCOM.Company oCompany = null;
+        // puntos a estudiar
+        // modos de formulario
+        // eventos de controles
         static void Main(string[] args)
         {
             ConexionUIAPI();
             //agregarmenus();
-            // benjamin
-            /// cambio hoy dia
-            /// otro cambio
-            /// //oto cambio
-            /// dddd
-            /// sihh
-            /// ggggh
-            /// // fffff
-            /// hyg
-            /// jjjhghg
-            /// jhh
-            /// ddd
-            /// benjamin
-            /// // huam soto benjan
-            Menus();
-            SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
-            SBO_Application.MenuEvent += new SAPbouiCOM._IApplicationEvents_MenuEventEventHandler(SBO_Application_MenuEvent);
+            // benjamin huama soto
+            
+           Menus();
+            //SBO_Application.AppEvent += new SAPbouiCOM._IApplicationEvents_AppEventEventHandler(SBO_Application_sistema);
+           
+            //SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
+            //SBO_Application.MenuEvent += new SAPbouiCOM._IApplicationEvents_MenuEventEventHandler(SBO_Application_MenuEvent);
             System.Windows.Forms.Application.Run();
         }
 
@@ -50,6 +43,7 @@ namespace UIAPI_CODIGO
                 SBO_Application = oSboGuiApi.GetApplication(-1);
                 oCompany = (SAPbobsCOM.Company)SBO_Application.Company.GetDICompany();
                 SBO_Application.StatusBar.SetText("EXITO - Conexion UI API Exitosa", BoMessageTime.bmt_Medium, BoStatusBarMessageType.smt_Success);
+                SBO_Application.MessageBox("hoy es domingo");
                 oSboGuiApi = null;
             }
             catch (Exception ex)
@@ -163,7 +157,7 @@ namespace UIAPI_CODIGO
               
                 myCreationPAckage.UniqueID = "be_002";
                
-                myCreationPAckage.String = "Formulario por codigo";
+                myCreationPAckage.String = "Formulario";
                
                 myCreationPAckage.Position = 1;
                 
@@ -180,7 +174,7 @@ namespace UIAPI_CODIGO
 
                 myCreationPAckage.UniqueID = "be_003";
 
-                myCreationPAckage.String = "Crear ART";
+                myCreationPAckage.String = "Mensaje";
 
                 myCreationPAckage.Position = 2;
 
@@ -200,6 +194,7 @@ namespace UIAPI_CODIGO
                 // numero de formulario
                 // numero de control 
                 //Pedidos de Venta
+                // 139 es el id del formulario
                 if (pVal.FormTypeEx == "139")
                 {
                     if (pVal.EventType == BoEventTypes.et_FORM_LOAD && pVal.BeforeAction == false)
@@ -218,21 +213,43 @@ namespace UIAPI_CODIGO
                     }
                     if (pVal.EventType == BoEventTypes.et_CLICK && pVal.BeforeAction == true && pVal.ItemUID == "btnEntrega")
                     {
-                        //SBO_Application.MessageBox("presionaste");
-                        SAPbobsCOM.BusinessPartners objsocio;
+                        //SAPbouiCOM.EditText txt = (SAPbouiCOM.EditText)oForm.Items.Item("Item_1").Specific;
+                        SBO_Application.MessageBox("presionaste");
+                        //SAPbobsCOM.BusinessPartners objsocio;
 
-                        objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
-                        objsocio.CardCode = "codigo23";
-                        objsocio.CardName = "benjamin josue";
-                        objsocio.AdditionalID = "CE";
-                        objsocio.FederalTaxID = "00000";
-                        objsocio.Phone1 = "55555";
+                        //objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
+                        //objsocio.CardCode = "codigo23";
+                        //objsocio.CardName = "benjamin josue";
+                        //objsocio.AdditionalID = "CE";
+                        //objsocio.FederalTaxID = "00000";
+                        //objsocio.Phone1 = "55555";
 
-                        int estado = objsocio.Add();
+                        //int estado = objsocio.Add();
 
 
 
                     }
+                }
+                if (pVal.FormTypeEx == "60006")
+                {
+                    if (pVal.EventType == BoEventTypes.et_CLICK && pVal.BeforeAction == true && pVal.ItemUID == "btnEntrega")
+                {
+                    Form oForm = SBO_Application.Forms.Item(FormUID);
+                    SBO_Application.MessageBox("presionaste otra vez");
+                    //SAPbobsCOM.BusinessPartners objsocio;
+                    //SAPbouiCOM.EditText txt = (SAPbouiCOM.EditText)oForm.Items.Item("be_2360").Specific;
+                    //objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
+                    //objsocio.CardCode = "codigo23";
+                    //objsocio.CardName = "benjamin josue";
+                    //objsocio.AdditionalID = "CE";
+                    //objsocio.FederalTaxID = "00000";
+                    //objsocio.Phone1 = "55555";
+
+                    //int estado = objsocio.Add();
+
+
+
+                }
                 }
             }
             catch (Exception ex)
@@ -253,9 +270,18 @@ namespace UIAPI_CODIGO
 
                 }
 
+                if (pVal.MenuUID == "1282" )
+                {
+                    //SBO_Application.MessageBox("click en nuevo");
+                    // opero en form activo
+                    SAPbouiCOM.Form currentForm = SBO_Application.Forms.ActiveForm;
+                    SBO_Application.MessageBox(currentForm.UniqueID.ToString());
+
+
+                }
                 if (pVal.MenuUID == "be_002" && pVal.BeforeAction == false)
                 {
-                    SBO_Application.MessageBox("formulario por  codigo");
+                    //SBO_Application.MessageBox("formulario por  codigo");
                     // puedo abrir formulario 
                     SAPbouiCOM.Form objform;
                     SAPbouiCOM.FormCreationParams objpara;
@@ -263,6 +289,7 @@ namespace UIAPI_CODIGO
 
                     objpara = (SAPbouiCOM.FormCreationParams)SBO_Application.CreateObject(SAPbouiCOM.BoCreatableObjectType.cot_FormCreationParams);
                     objpara.BorderStyle = SAPbouiCOM.BoFormBorderStyle.fbs_Fixed;
+                    //objpara.UniqueID = "88bb6"; 
                     objform = SBO_Application.Forms.AddEx(objpara);
                     objform.Title = "benjamin huaman";
                     objform.Left = 100;
@@ -273,7 +300,20 @@ namespace UIAPI_CODIGO
                     objitem.Left=50;
                     SAPbouiCOM.EditText objedit = (SAPbouiCOM.EditText)objitem.Specific;
 
+                    Button oButton;
+                    objitem = objform.Items.Add("btnEntrega", BoFormItemTypes.it_BUTTON);
+                    //Inicializando el objeto boton con la referencia del objeto item
+                    oButton = (Button)objitem.Specific;
+                    //Agregando propiedades al boton
+                    oButton.Caption = "Entrega";
+                    //agregando posicio del boton
+                    objitem.Top = objform.Height - (objitem.Height + 48);
+                    objitem.Left = (objitem.Width + 20) + 60;
+
+
                     objform.Visible = true;
+                    //SBO_Application.MessageBox(objform.u);
+
                 }
             }
             catch (Exception ex)
@@ -303,5 +343,29 @@ namespace UIAPI_CODIGO
             }
         }
 
+
+      
+
+
+        public static void SBO_Application_sistema(SAPbouiCOM.BoAppEventTypes EventType)
+        {
+            switch (EventType)
+            {
+                case SAPbouiCOM.BoAppEventTypes.aet_ShutDown:
+                    //Exit Add-On
+                    System.Environment.Exit(0);
+                    break;
+                case SAPbouiCOM.BoAppEventTypes.aet_CompanyChanged:
+                    break;
+                case SAPbouiCOM.BoAppEventTypes.aet_FontChanged:
+                    break;
+                case SAPbouiCOM.BoAppEventTypes.aet_LanguageChanged:
+                    break;
+                case SAPbouiCOM.BoAppEventTypes.aet_ServerTerminition:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

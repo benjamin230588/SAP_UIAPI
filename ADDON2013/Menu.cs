@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SAPbouiCOM.Framework;
 
-namespace UIAPI_DI
+namespace ADDON2013
 {
     class Menu
     {
@@ -19,8 +19,8 @@ namespace UIAPI_DI
             oMenuItem = Application.SBO_Application.Menus.Item("43520"); // moudles'
 
             oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_POPUP;
-            oCreationPackage.UniqueID = "UIAPI_DI";
-            oCreationPackage.String = "UIAPI_DI";
+            oCreationPackage.UniqueID = "ADDON2013";
+            oCreationPackage.String = "ADDON2013";
             oCreationPackage.Enabled = true;
             oCreationPackage.Position = -1;
 
@@ -39,23 +39,13 @@ namespace UIAPI_DI
             try
             {
                 // Get the menu collection of the newly added pop-up item
-                oMenuItem = Application.SBO_Application.Menus.Item("UIAPI_DI");
+                oMenuItem = Application.SBO_Application.Menus.Item("ADDON2013");
                 oMenus = oMenuItem.SubMenus;
 
                 // Create s sub menu
                 oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
-                oCreationPackage.UniqueID = "UIAPI_DI.Form1";
+                oCreationPackage.UniqueID = "ADDON2013.Form1";
                 oCreationPackage.String = "Form1";
-                oMenus.AddEx(oCreationPackage);
-
-
-                oMenuItem = Application.SBO_Application.Menus.Item("UIAPI_DI");
-                oMenus = oMenuItem.SubMenus;
-
-                // Create s sub menu
-                oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
-                oCreationPackage.UniqueID = "UIAPI_DI.grilla";
-                oCreationPackage.String = "Socio Negocio";
                 oMenus.AddEx(oCreationPackage);
             }
             catch (Exception er)
@@ -70,30 +60,11 @@ namespace UIAPI_DI
 
             try
             {
-                if (pVal.BeforeAction && pVal.MenuUID == "UIAPI_DI.Form1")
+                if (pVal.BeforeAction && pVal.MenuUID == "ADDON2013.Form1")
                 {
                     Form1 activeForm = new Form1();
                     activeForm.Show();
                 }
-                if (pVal.BeforeAction && pVal.MenuUID == "UIAPI_DI.grilla")
-                {
-                    //Grilla activeForm = new Grilla();
-                    Prueba activeForm = new Prueba();
-                    //activeForm. 
-                   
-                    activeForm.Show();
-                }
-
-                if (pVal.MenuUID == "1282")
-                {
-                    //SBO_Application.MessageBox("click en nuevo");
-                    // opero en form activo
-                    SAPbouiCOM.Form currentForm = Application.SBO_Application.Forms.ActiveForm;
-                    Application.SBO_Application.MessageBox(currentForm.TypeEx.ToString());
-
-
-                }
-
             }
             catch (Exception ex)
             {

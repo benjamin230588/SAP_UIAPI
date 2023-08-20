@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SAPbouiCOM.Framework;
 
-namespace UIAPI_DI
+namespace SBOAddonProject1
 {
     class Program
     {
@@ -14,8 +14,6 @@ namespace UIAPI_DI
         {
             try
             {
-                // Application es una clase con propiedades y metodos predefinidos
-                // instancio la clase de Application
                 Application oApp = null;
                 if (args.Length < 1)
                 {
@@ -26,11 +24,8 @@ namespace UIAPI_DI
                     oApp = new Application(args[0]);
                 }
                 Menu MyMenu = new Menu();
-                // creamos menu en la barra de sap b1 cliente
                 MyMenu.AddMenuItems();
-                // evento de menu ponemos a la escucha los item de menu 
                 oApp.RegisterMenuEventHandler(MyMenu.SBO_Application_MenuEvent);
-                //a la escucha de eventos de áplicacion
                 Application.SBO_Application.AppEvent += new SAPbouiCOM._IApplicationEvents_AppEventEventHandler(SBO_Application_AppEvent);
                 oApp.Run();
             }

@@ -56,6 +56,7 @@ namespace UIAPI_DI
 
         private void Button0_ClickBefore(object sboObject, SAPbouiCOM.SBOItemEventArg pVal, out bool BubbleEvent)
         {
+            // grilla solo se muestra la informacion
             BubbleEvent = true;
             objform1 = objapli.Forms.ActiveForm;
             objtabla = objform1.DataSources.DataTables.Add("benja");

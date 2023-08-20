@@ -38,6 +38,10 @@ namespace UIAPI_DI
             this.Grid0 = ((SAPbouiCOM.Grid)(this.GetItem("Item_6").Specific));
             this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("Item_8").Specific));
             this.ComboBox1 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_9").Specific));
+            this.ComboBox2 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_10").Specific));
+            this.EditText2 = ((SAPbouiCOM.EditText)(this.GetItem("Item_11").Specific));
+            this.Button2 = ((SAPbouiCOM.Button)(this.GetItem("Item_12").Specific));
+            this.ComboBox3 = ((SAPbouiCOM.ComboBox)(this.GetItem("Item_13").Specific));
             this.OnCustomInitialize();
 
         }
@@ -93,5 +97,9 @@ namespace UIAPI_DI
         private SAPbouiCOM.Grid Grid0;
         private SAPbouiCOM.Button Button1;
         private SAPbouiCOM.ComboBox ComboBox1;
+        private SAPbouiCOM.ComboBox ComboBox2;
+        private SAPbouiCOM.EditText EditText2;
+        private SAPbouiCOM.Button Button2;
+        private SAPbouiCOM.ComboBox ComboBox3;
     }
 }
