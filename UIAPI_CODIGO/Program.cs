@@ -27,8 +27,8 @@ namespace UIAPI_CODIGO
            Menus();
             //SBO_Application.AppEvent += new SAPbouiCOM._IApplicationEvents_AppEventEventHandler(SBO_Application_sistema);
            
-            //SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
-            //SBO_Application.MenuEvent += new SAPbouiCOM._IApplicationEvents_MenuEventEventHandler(SBO_Application_MenuEvent);
+            SBO_Application.ItemEvent += new SAPbouiCOM._IApplicationEvents_ItemEventEventHandler(SBO_Application_ItemEvent);
+            SBO_Application.MenuEvent += new SAPbouiCOM._IApplicationEvents_MenuEventEventHandler(SBO_Application_MenuEvent);
             System.Windows.Forms.Application.Run();
         }
 
@@ -190,52 +190,121 @@ namespace UIAPI_CODIGO
         {
             BubbleEvent = true;
             try
-            {   //numero de menu 
+            {
+                if (pVal.FormTypeEx == "UDO_FT_clienteudo")
+                {
+                    if (pVal.EventType == SAPbouiCOM.BoEventTypes.et_FORM_LOAD && pVal.BeforeAction == false)
+                    {
+                        //Form oForm = SBO_Application.Forms.Item(FormUID);
+                        //SAPbouiCOM.Form oUDOForm = SBO_Application.Forms.Item(FormUID);
+                        SAPbouiCOM.Form oUDOForm = SBO_Application.Forms.Item(FormUID);
+                        //GetFormByTypeAndCount(pVal.FormType, pVal.FormTypeCount);
+
+                       
+
+                        //SAPbouiCOM.Item buttonItem = oUDOForm.Items.Add("btnI5D", BoFormItemTypes.it_BUTTON);
+                        SAPbouiCOM.Item oItem;
+                        SAPbouiCOM.Button oButton;
+                        oItem = oUDOForm.Items.Add("btn256", SAPbouiCOM.BoFormItemTypes.it_BUTTON);
+                        //Inicializando el objeto boton con la referencia del objeto item
+                        oButton = (SAPbouiCOM.Button)oItem.Specific;
+                        //Agregando propiedades al boton
+                        oButton.Caption = "btnEntrega";
+                        //agregando posicio del boton
+                        oItem.Height = 30;
+                        oItem.Width = 90;
+                        oItem.Top = 70;
+                        oItem.Left = (oItem.Width + 20) + 50;
+                        ////oButton = (Button)oItem.Specific;
+                        //buttonItem.Top = 20; // Ajusta la posición del botón
+                        //buttonItem.Left = 100;
+                        ////buttonItem.Width = 100;
+                        //buttonItem.Height = 20;
+                        //((SAPbouiCOM.Button)buttonItem.Specific).Caption = "Mitodoón";
+                        //oItem.FromPane = 0;
+                        //oItem.ToPane = 0;
+                        oItem.Visible = true;
+                    }
+                   
+                }
+
+                //numero de menu 
                 // numero de formulario
                 // numero de control 
                 //Pedidos de Venta
                 // 139 es el id del formulario
-                if (pVal.FormTypeEx == "139")
-                {
-                    if (pVal.EventType == BoEventTypes.et_FORM_LOAD && pVal.BeforeAction == false)
-                    {
-                        Form oForm = SBO_Application.Forms.Item(FormUID);
-                        Item oItem;
-                        Button oButton;
-                        oItem = oForm.Items.Add("btnEntrega", BoFormItemTypes.it_BUTTON);
-                        //Inicializando el objeto boton con la referencia del objeto item
-                        oButton = (Button)oItem.Specific;
-                        //Agregando propiedades al boton
-                        oButton.Caption = "Entrega";
-                        //agregando posicio del boton
-                        oItem.Top = oForm.Height - (oItem.Height + 48);
-                        oItem.Left = (oItem.Width + 20) + 60;
-                    }
-                    if (pVal.EventType == BoEventTypes.et_CLICK && pVal.BeforeAction == true && pVal.ItemUID == "btnEntrega")
-                    {
-                        //SAPbouiCOM.EditText txt = (SAPbouiCOM.EditText)oForm.Items.Item("Item_1").Specific;
-                        SBO_Application.MessageBox("presionaste");
-                        //SAPbobsCOM.BusinessPartners objsocio;
+                //UDO_FT_clienteudo
+                //if (pVal.FormTypeEx == "UDO_FT_clienteudo")
+                //{
+                //    if (pVal.EventType == BoEventTypes.et_FORM_LOAD && pVal.BeforeAction == true)
+                //    {
+                //        //Form oForm = SBO_Application.Forms.Item(FormUID);
+                //         //SAPbouiCOM.Form oUDOForm = SBO_Application.Forms.Item(FormUID);
+                //         SAPbouiCOM.Form oUDOForm = SBO_Application.Forms.GetFormByTypeAndCount(pVal.FormType, pVal.FormTypeCount);
 
-                        //objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
-                        //objsocio.CardCode = "codigo23";
-                        //objsocio.CardName = "benjamin josue";
-                        //objsocio.AdditionalID = "CE";
-                        //objsocio.FederalTaxID = "00000";
-                        //objsocio.Phone1 = "55555";
+                //        //Item oItem;
+                //        //Button oButton;
+                //        //oItem = oForm.Items.Add("btn256", BoFormItemTypes.it_BUTTON);
+                //        ////Inicializando el objeto boton con la referencia del objeto item
+                //        //oButton = (Button)oItem.Specific;
+                //         //Agregando propiedades al boton
+                //        //oButton.Caption = "Entrega";
+                //        ////agregando posicio del boton
+                //        //oItem.Height = 15;
+                //        ////oItem.Width = 30;
+                //        //oItem.Top = oForm.Height - (oItem.Height + 40);
+                //        //oItem.Left = (oItem.Width + 20) + 50;
 
-                        //int estado = objsocio.Add();
+                //         //SAPbouiCOM.Item buttonItem = oUDOForm.Items.Add("btnI5D", BoFormItemTypes.it_BUTTON);
+                //        Item oItem;
+                //        Button oButton;
+                //        oItem = oUDOForm.Items.Add("btn256", BoFormItemTypes.it_BUTTON);
+                //        //Inicializando el objeto boton con la referencia del objeto item
+                //        oButton = (Button)oItem.Specific;
+                //        //Agregando propiedades al boton
+                //        oButton.Caption = "btnEntrega";
+                //        //agregando posicio del boton
+                //        oItem.Height = 15;
+                //        //oItem.Width = 30;
+                //        oItem.Top = 40;
+                //        oItem.Left = (oItem.Width + 20) + 50;
+                //         ////oButton = (Button)oItem.Specific;
+                //         //buttonItem.Top = 20; // Ajusta la posición del botón
+                //         //buttonItem.Left = 100;
+                //         ////buttonItem.Width = 100;
+                //         //buttonItem.Height = 20;
+                //         //((SAPbouiCOM.Button)buttonItem.Specific).Caption = "Mitodoón";
+                //        oItem.FromPane = 0;
+                //        oItem.ToPane = 0;
+                //        oItem.Visible = true;
+                //    }
+                //    if (pVal.EventType == BoEventTypes.et_CLICK && pVal.BeforeAction == true && pVal.ItemUID == "btnEntrega")
+                //    {
+                //        //SAPbouiCOM.EditText txt = (SAPbouiCOM.EditText)oForm.Items.Item("Item_1").Specific;
+                //        //SBO_Application.MessageBox("presionaste");
+                //        SBO_Application.ActivateMenuItem("51201");
+                //        //SAPbobsCOM.BusinessPartners objsocio;
+
+                //        //objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
+                //        //objsocio.CardCode = "codigo23";
+                //        //objsocio.CardName = "benjamin josue";
+                //        //objsocio.AdditionalID = "CE";
+                //        //objsocio.FederalTaxID = "00000";
+                //        //objsocio.Phone1 = "55555";
+
+                //        //int estado = objsocio.Add();
 
 
 
-                    }
-                }
+                //    }
+                //}
                 if (pVal.FormTypeEx == "60006")
                 {
                     if (pVal.EventType == BoEventTypes.et_CLICK && pVal.BeforeAction == true && pVal.ItemUID == "btnEntrega")
                 {
                     Form oForm = SBO_Application.Forms.Item(FormUID);
-                    SBO_Application.MessageBox("presionaste otra vez");
+                    //SBO_Application.ActivateMenuItem("51201");
+                  //  SBO_Application.MessageBox("presionaste otra vez");
                     //SAPbobsCOM.BusinessPartners objsocio;
                     //SAPbouiCOM.EditText txt = (SAPbouiCOM.EditText)oForm.Items.Item("be_2360").Specific;
                     //objsocio = (SAPbobsCOM.BusinessPartners)oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners);
@@ -289,7 +358,7 @@ namespace UIAPI_CODIGO
 
                     objpara = (SAPbouiCOM.FormCreationParams)SBO_Application.CreateObject(SAPbouiCOM.BoCreatableObjectType.cot_FormCreationParams);
                     objpara.BorderStyle = SAPbouiCOM.BoFormBorderStyle.fbs_Fixed;
-                    //objpara.UniqueID = "88bb6"; 
+                    objpara.UniqueID = "benjauuu"; 
                     objform = SBO_Application.Forms.AddEx(objpara);
                     objform.Title = "benjamin huaman";
                     objform.Left = 100;

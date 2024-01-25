@@ -45,7 +45,7 @@ namespace AddonBen
                 // Create s sub menu
                 oCreationPackage.Type = SAPbouiCOM.BoMenuType.mt_STRING;
                 oCreationPackage.UniqueID = "AddonBen.Articulo";
-                oCreationPackage.String = "SOCIO";
+                oCreationPackage.String = "SOCIO Udo";
                 oMenus.AddEx(oCreationPackage);
             }
             catch (Exception er)
@@ -62,7 +62,7 @@ namespace AddonBen
             {
                 if (pVal.BeforeAction && pVal.MenuUID == "AddonBen.Articulo")
                 {
-                    Articulo activeForm = new Articulo();
+                    UdoForm activeForm = new UdoForm();
                     activeForm.Show();
                 }
             }

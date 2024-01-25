@@ -69,6 +69,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemForm1.b1f.cs">
+      <DependentUpon>SystemForm1.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="SystemForm2.b1f.cs">
+      <DependentUpon>SystemForm2.b1f</DependentUpon>
+    </Compile>
+    <Compile Include="UdoForm.b1f.cs">
+      <DependentUpon>UdoForm.b1f</DependentUpon>
+    </Compile>
     <None Include="Articulo.b1f">
       <FormCategory>UserForm</FormCategory>
     </None>
@@ -78,6 +87,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="SystemForm1.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="SystemForm1.b1f__orig_srf">
+      <DependentUpon>SystemForm1.b1f</DependentUpon>
+    </None>
+    <None Include="SystemForm2.b1f">
+      <FormCategory>SystemForm</FormCategory>
+    </None>
+    <None Include="SystemForm2.b1f__orig_srf">
+      <DependentUpon>SystemForm2.b1f</DependentUpon>
+    </None>
+    <None Include="UdoForm.b1f">
+      <FormCategory>UserForm</FormCategory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
