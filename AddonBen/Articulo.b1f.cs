@@ -33,6 +33,8 @@ namespace AddonBen
             this.Button1 = ((SAPbouiCOM.Button)(this.GetItem("Item_12").Specific));
             this.Button1.PressedAfter += new SAPbouiCOM._IButtonEvents_PressedAfterEventHandler(this.Button1_PressedAfter);
             this.Button1.ClickAfter += new SAPbouiCOM._IButtonEvents_ClickAfterEventHandler(this.Button1_ClickAfter);
+            this.Matrix0 = ((SAPbouiCOM.Matrix)(this.GetItem("Item_13").Specific));
+            this.Matrix0.ClickAfter += new SAPbouiCOM._IMatrixEvents_ClickAfterEventHandler(this.Matrix0_ClickAfter);
             this.OnCustomInitialize();
 
         }
@@ -108,6 +110,14 @@ namespace AddonBen
             //buttonItem.FromPane = 0;
             //buttonItem.ToPane = 0;
             //buttonItem.Visible = true;
+
+        }
+
+        private SAPbouiCOM.Matrix Matrix0;
+
+        private void Matrix0_ClickAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            throw new System.NotImplementedException();
 
         }
     }

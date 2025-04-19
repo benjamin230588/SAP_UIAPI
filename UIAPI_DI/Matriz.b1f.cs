@@ -21,8 +21,11 @@ namespace UIAPI_DI
         {
             this.Inicio();
             this.Button0 = ((SAPbouiCOM.Button)(this.GetItem("Item_0").Specific));
+            this.Button0.PressedAfter += new SAPbouiCOM._IButtonEvents_PressedAfterEventHandler(this.Button0_PressedAfter);
             this.Button0.ClickBefore += new SAPbouiCOM._IButtonEvents_ClickBeforeEventHandler(this.Button0_ClickBefore);
             this.Matrix0 = ((SAPbouiCOM.Matrix)(this.GetItem("Item_1").Specific));
+            this.Matrix0.PressedAfter += new SAPbouiCOM._IMatrixEvents_PressedAfterEventHandler(this.Matrix0_PressedAfter);
+            this.Matrix0.LostFocusAfter += new SAPbouiCOM._IMatrixEvents_LostFocusAfterEventHandler(this.Matrix0_LostFocusAfter);
             this.OnCustomInitialize();
 
         }
@@ -72,6 +75,24 @@ namespace UIAPI_DI
                 }
 
             }
+
+        }
+
+        private void Matrix0_LostFocusAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            throw new System.NotImplementedException();
+
+        }
+
+        private void Matrix0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            throw new System.NotImplementedException();
+
+        }
+
+        private void Button0_PressedAfter(object sboObject, SAPbouiCOM.SBOItemEventArg pVal)
+        {
+            throw new System.NotImplementedException();
 
         }
     }
